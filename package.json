@@ -24,6 +24,7 @@
     "opn": "^5.4.0",
     "path": "^0.12.7",
     "prettyjson": "^1.2.1",
+    "strip-ansi-control-characters": "^2.0.0",
     "then-request": "^6.0.0"
   },
   "devDependencies": {

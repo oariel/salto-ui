@@ -38,13 +38,20 @@ function runSalto(args, responses) {
         appendOutput('stderr: <'+err+'>' );
     });
 
-    child.stdout.on('data', function (data) {
-        appendOutput(data);
-        if ( count < responses.length && data.indexOf(responses[count].q) !== -1 ) {
-            child.stdin.write(responses[count].a);
-            child.stdin.end();
-            count++;
-        }
+    child.stdout.on('data', async function (data) {
+
+      appendOutput( data.toString().replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '').trim() );
+      if ( count >= responses.length )
+        return;
+        
+      // Send responses
+      var exp = new RegExp(responses[count].q);
+      if ( exp.test(data) ) {
+          child.stdin.setEncoding('utf-8');
+          child.stdin.write(responses[count].a + "\n");
+          child.stdin.end();
+          count++;
+      }  
     });
 
     child.stderr.on('data', function (data) {

@@ -14,19 +14,7 @@ function saltoMain() {
 }
 
 function run() {
-    var st = document.getElementById("status");
-    var o = document.getElementById("command-output-div");
-    st.innerHTML = "Working...";
-    if ( o.style.display === "none" ) {
-        var img = document.getElementById("working-image");
-        var timer = setInterval(function() { 
-            img.style.display = "block";
-            if ( st.innerHTML !== "Working..." ) {
-                img.style.display = "none";
-                clearInterval(timer);
-            }
-        }, 250);
-    }
+    showAnimation();
     let homeDir = config.get('saltoHome');
     if ( !homeDir )
         return getStatus().innerHTML = "Workspace home directory is not configured.";
@@ -37,18 +25,4 @@ function run() {
     runSalto(['init', workspaceName], [ {q: "Enter a name for the first environment in the workspace", a: envName} ]);
 }
 
-function toggleOutput() {
-    var x = document.getElementById("command-output-div");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        window.resizeBy(0, 200)
-    } else {
-        x.style.display = "none";
-        window.resizeBy(0, -200)
-    }
-}
-
-function getCommandOutput() { return document.getElementById("command-output");  };
-
-function getStatus() { return document.getElementById("status");  };
 
