@@ -1,0 +1,72 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>My Approvals</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    .close-thick:after {
+        color: #ffa500;
+        font: 16px/100% arial, sans-serif;
+        position: absolute;
+        right: 4px;
+        text-decoration: none;
+        text-shadow: 0 1px 0 #4F515A;
+        top: 0px;
+        content: '×'; /* UTF-8 symbol */
+    }
+    </style>
+</head>
+<body oncontextmenu="return false" style="padding:0; background-color:#ffffff">
+    <div style="Margin:0px auto;padding: 16px;">
+        <img alt="Salso Logo" src="https://salto.io/assets/images/logo.svg">
+        <a href="#" class="close-thick" onclick="window.close();"></a>
+        <div style="min-height:50px;" class="content" id="card">
+            <h1>Get started with Salto</h1>
+            <p><a href="#" onclick="saltoHome();">Home directory:</a> <span id="saltoHome"></span></p>
+            <script src="saltoMain.js"></script>
+            <table style="width: 100%" cellpadding="5">
+                <tr>
+                    <td style="width: 25%; text-align: right;">
+                        <strong><a href="#" onclick="saltoInit();">Initialize:</a></strong>
+                    </td>
+                    <td style="text-align: left;">
+                        Initialize a new Salto workspace and create your first environment
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%; text-align: right;">
+                        <strong><a href="#" onclick="saltoServices();">Add service:</a>:</strong>
+                    </td>
+                    <td style="text-align: left;">
+                        Add a new business application service to your Salto workspace
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%; text-align: right;">
+                        <strong><a href="#" onclick="saltoFetch();">Fetch:</a></strong>
+                    </td>
+                    <td style="text-align: left;">
+                        Fetch a configuration from your service
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%; text-align: right;">
+                        <strong><a href="#" onclick="saltoDeploy();">Deploy</a></strong>
+                    </td>
+                    <td style="text-align: left;">
+                        deploy configuration changes from your saved configuration
+                    </td>
+                </tr>
+            </table>
+            <script src="shell.js"></script>
+            <script>
+                function getCommandOutput() { return document.getElementById("command-output");  };
+                function getStatus()      { return document.getElementById("status");  };
+            </script>
+        </div>
+    <div>
+    <div class="footer">
+        Copyright&copy; Salto 2019-2020<br>
+        <a href="#" onClick='privacyPolicy()'>Privacy Policy</a>&nbsp;|&nbsp;<a href="#" onClick='visitSalto()'>Visit Salto</a>
+    </div>
+</body>
+</html>

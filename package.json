@@ -1,0 +1,39 @@
+{
+  "name": "Salto",
+  "version": "1.0.8",
+  "description": "Salto Desktop Client",
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "electron ./ --enable-logging",
+    "dev": "NODE_ENV='development' npm run start",
+    "dist": "build -mwl --x64 --ia32"
+  },
+  "author": "Salto, Inc.",
+  "license": "ISC",
+  "dependencies": {
+    "aes256": "^1.0.4",
+    "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "electron": "^3.1.13",
+    "electron-config": "^1.0.0",
+    "electron-is": "^3.0.0",
+    "electron-notify": "^0.1.0",
+    "express": "^4.16.4",
+    "mime-types": "^2.1.22",
+    "opn": "^5.4.0",
+    "path": "^0.12.7",
+    "prettyjson": "^1.2.1",
+    "then-request": "^6.0.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^20.38.5",
+    "electron-config": "^1.0.0",
+    "electron-prebuilt": "^1.4.13"
+  },
+  "build": {
+    "appId": "Salto",
+    "dmg": {},
+    "win": {}
+  }
+}
