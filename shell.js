@@ -38,7 +38,7 @@ function runSalto(args, responses) {
         appendOutput('stderr: <'+err+'>' );
     });
 
-    child.stdout.on('data', async function (data) {
+    child.stdout.on('data', function (data) {
 
       appendOutput( data.toString().replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '').trim() );
       if ( count >= responses.length )
