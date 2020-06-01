@@ -1,4 +1,5 @@
 const WORKING_INDICATOR = "Working...";
+const COMPLETE_INDICATOR = "Salto completed.";
 
 function showAnimation() {
     var st = document.getElementById("status");
@@ -6,6 +7,7 @@ function showAnimation() {
     var o = document.getElementById("command-output-div");
     var img = document.getElementById("working-image");
     var rb = document.getElementById("run-button");
+    var ns = document.getElementById("next-step");
 
     st.innerHTML = WORKING_INDICATOR;
     if ( o.style.display === "none" ) {
@@ -16,6 +18,10 @@ function showAnimation() {
             if ( st.innerHTML !== WORKING_INDICATOR ) {
                 img.style.display = "none";
                 rb.disabled = false;
+                if ( ns && st.innerHTML === COMPLETE_INDICATOR ) {
+                    st.style.display = "none";
+                    ns.style.display = "block";
+                }    
                 clearInterval(timer);
             }
             if ( c.value )

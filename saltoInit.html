@@ -8,7 +8,7 @@
         <div style="float: left;"><img alt="Salso Logo" width="48" src="https://salto.io/assets/images/logo.svg"></div>
         <a href="#" class="close-thick" onclick="window.close();"></a>
         <div style="min-height:50px;" class="content" id="card">
-            <h1>Initialize a Salto Workspace - "salto init"</h1>
+            <h1><span style="font-family: Inconsolata, monospace">salto init: </span>Initialize a Salto Workspace</h1>
             <hr>
             <script src="saltoInit.js"></script>
             <table style="width: 100%" cellpadding="5">
@@ -35,6 +35,7 @@
                 </tr>
             </table>
             <p><div style="font-weight: bold;" id="status"></div></p>
+            <p><div style="display: none;" id="next-step"><strong>Next step: <a href="#" onclick="saltoAddServices();">Add services</a></strong></div>
             <p><div style="display: none;" id="working-image"><img id="working" alt="Working..." src="./working.gif" width="100"></div></p>
             <p><div style="display: none;" id="command-output-div"><textarea rows="20" cols="90" id="command-output" disabled="true"></textarea></div></div></p>
             <script src="shell.js"></script>

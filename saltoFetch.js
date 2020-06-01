@@ -14,6 +14,11 @@ function saltoMain() {
     return true;
 }
 
+function saltoPreview() {
+    ipcRenderer.send("saltoPreview");    
+    return true;
+}
+
 function run() {
     let homeDir = config.get('saltoHome');
     if ( !homeDir )

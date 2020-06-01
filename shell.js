@@ -11,6 +11,18 @@ var is = require("electron-is");
 function appendOutput(msg) { getCommandOutput().value += (msg+'\n'); };
 function setStatus(msg)    { getStatus().innerHTML = msg; };
 
+function showCode() {
+  var homeDir = config.get('saltoHome');
+  var child = require('child_process').execFile;
+  var executablePath = "code";
+  var parameters = [homeDir];
+  child(executablePath, parameters, function(err, data) {
+    if ( err) 
+      console.log(err)
+    console.log(data.toString());
+  });
+}
+
 function showOS() {
     if (is.windows())
       appendOutput("Windows Detected.")
