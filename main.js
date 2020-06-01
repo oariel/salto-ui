@@ -12,6 +12,8 @@ const Config = require('electron-config');
 const config = new Config();
 
 const iconPath = path.join(__dirname, './app.png');
+const soundPath = path.join(__dirname, './alert.wav');
+
 let appIcon = null;
 let alert = null;
 let win = null;
@@ -29,7 +31,7 @@ app.on('ready', () => {
   // Change notification config options (only works after app is ready)
   alert = require('electron-notify');
   alert.setConfig({
-    appIcon: path.join(__dirname, 'icon.png'),
+    appIcon: path.join(__dirname, './icon.png'),
     displayTime: 6000
   });
 
@@ -52,7 +54,7 @@ app.on('ready', () => {
       type: 'separator'
     },
     {
-      label: 'Initialize Salto workspace',
+      label: 'Initialize',
       click: () => {
         win.loadURL('file://' + __dirname + '/saltoInit.html');
         win.show();
@@ -62,7 +64,7 @@ app.on('ready', () => {
     {
       label: 'Add services',
       click: () => {
-        win.loadURL('file://' + __dirname + '/saltoAddService.html');
+        win.loadURL('file://' + __dirname + '/saltoAddServices.html');
         win.show();
         win.focus();
       }
@@ -121,11 +123,16 @@ app.on('ready', () => {
     win.show();
     win.focus();
     win.on('blur', () => {
-      win.close();
+      //win.close();
     })
     win.on('close', (event) => {
       event.preventDefault();
       win.hide();
+      alert.notify({ 
+        sound: soundPath,
+        title: "Salto still active", 
+        text: "Salto is still available in your tray" 
+      });
     })
     splash.destroy(); 
   }, 3000) 
@@ -159,6 +166,23 @@ ipcMain.on('saltoMain', (event) => {
 
 ipcMain.on('saltoInit', (event) => {
   win.loadURL('file://' + __dirname + '/saltoInit.html');
+});
+
+ipcMain.on('saltoAddServices', (event) => {
+  win.loadURL('file://' + __dirname + '/saltoAddServices.html');
+});
+
+ipcMain.on('saltoFetch', (event) => {
+  win.loadURL('file://' + __dirname + '/saltoFetch.html');
+});
+
+// notification
+ipcMain.on('notification', (event, title, content) => {
+  alert.notify({ 
+    sound: soundPath,
+    title: title, 
+    text: content 
+  });  
 });
 
 

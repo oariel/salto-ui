@@ -49,7 +49,6 @@ function runSalto(args, responses) {
       if ( exp.test(data) ) {
           child.stdin.setEncoding('utf-8');
           child.stdin.write(responses[count].a + "\n");
-          child.stdin.end();
           count++;
       }  
     });

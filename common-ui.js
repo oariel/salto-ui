@@ -1,14 +1,17 @@
+const WORKING_INDICATOR = "Working...";
+
 function showAnimation() {
     var st = document.getElementById("status");
     var c = document.getElementById("command-output");
     var o = document.getElementById("command-output-div");
-    st.innerHTML = "Working...";
+    var img = document.getElementById("working-image");
+
+    st.innerHTML = WORKING_INDICATOR;
+    img.style.display = "block";
     if ( o.style.display === "none" ) {
-        var img = document.getElementById("working-image");
         var tb = document.getElementById("toggle-button");
         var timer = setInterval(function() { 
-            img.style.display = "block";
-            if ( st.innerHTML !== "Working..." ) {
+            if ( st.innerHTML !== WORKING_INDICATOR ) {
                 img.style.display = "none";
                 clearInterval(timer);
             }
@@ -19,13 +22,20 @@ function showAnimation() {
 }
 
 function toggleOutput() {
-    var x = document.getElementById("command-output-div");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        window.resizeTo(720, 600)
-    } else {
-        x.style.display = "none";
-        window.resizeTo(720, 400)
+    var st = document.getElementById("status");
+    let isWorking = (st.innerHTML === WORKING_INDICATOR);
+    var c = document.getElementById("command-output-div");
+    var img = document.getElementById("working-image");
+    if (c.style.display === "none") {
+        img.style.display = "none";
+        c.style.display = "block";
+        window.resizeBy(0, 200)
+    } 
+    else {
+        c.style.display = "none";
+        if ( isWorking )
+            img.style.display = "block";
+        window.resizeBy(0, -200)
     }
 }
 

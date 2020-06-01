@@ -21,6 +21,16 @@ function saltoInit() {
     return true;
 }
 
+function saltoAddServices() {
+    ipcRenderer.send("saltoAddServices");    
+    return true;
+}
+
+function saltoFetch() {
+    ipcRenderer.send("saltoFetch");    
+    return true;
+}
+
 function saltoHome() {
     ipcRenderer.send("saltoHome");    
     return true;

@@ -1,0 +1,88 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>My Approvals</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .close-thick:after {
+            color: #ffa500;
+            font: 20px/100% arial, sans-serif;
+            position: absolute;
+            right: 4px;
+            text-decoration: none;
+            text-shadow: 0 1px 0 #4F515A;
+            top: 0px;
+            content: '×'; /* UTF-8 symbol */
+        }
+    </style>
+</head>
+<body oncontextmenu="return false" style="padding:0; background-color:#ffffff">
+    <div style="Margin:0px auto;padding: 16px;">
+        <div style="float: left;"><img alt="Salso Logo" width="48" src="https://salto.io/assets/images/logo.svg"></div>
+        <a href="#" class="close-thick" onclick="window.close();"></a>
+        <div style="min-height:50px;" class="content" id="card">
+            <h1>Add services to workspace - "salto services add"</h1>
+            <hr>
+            <script src="saltoAddServices.js"></script>
+            <table style="width: 100%" cellpadding="5">
+                <tr>
+                    <td style="width: 50%; text-align: right;">
+                        <strong>Application:</strong>
+                    </td>
+                    <td style="text-align: left;">
+                        <select name="application" id="application">
+                            <option value="salesforce">Salesforce</option>
+                            <option value="hubspot">Hubspot</option>
+                            <option value="netsiote">NetSuite</option>
+                          </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <strong>Username:</strong>
+                    </td>
+                    <td style="text-align: left;">
+                        <input type="text" size="30" id="username">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <strong>Password:</strong>
+                    </td>
+                    <td style="text-align: left;">
+                        <input type="password" id="password">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <strong>Token:</strong>
+                    </td>
+                    <td style="text-align: left;">
+                        <input type="password" size="30" id="token">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 35%; text-align: right;">
+                        <strong>Is it a sandbox?</strong>
+                    </td>
+                    <td style="text-align: left;">
+                        <select name="isSandbox" id="isSandbox">
+                            <option value="Y">Yes</option>
+                            <option value="n">No</option>
+                          </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" colspan="2">
+                        <div style="float: center;"><input value="Run Command" type="button" onclick="run();">&nbsp;<input value="Toggle Output" disabled type="button" id="toggle-button" onclick="toggleOutput();">&nbsp;<input value="Main Menu" type="button" onclick="saltoMain();"></div>
+                    </td>
+                </tr>
+            </table>
+            <p><div style="font-weight: bold;" id="status"></div></p>
+            <p><div style="display: none;" id="working-image"><img id="working" alt="Working..." src="./working.gif" width="100"></div></p>
+            <p><div style="display: none;" id="command-output-div"><textarea rows="20" cols="90" id="command-output" disabled="true"></textarea></div></div></p>
+            <script src="shell.js"></script>
+            <script src="common-ui.js"></script>
+        </div>
+    <div>
+</body>
+</html>
