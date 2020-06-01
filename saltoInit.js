@@ -15,7 +15,6 @@ function saltoMain() {
 }
 
 function run() {
-    showAnimation();
     let homeDir = config.get('saltoHome');
     if ( !homeDir )
         return getStatus().innerHTML = "Workspace home directory is not configured.";
@@ -23,6 +22,7 @@ function run() {
     if ( !workspaceName )
         return getStatus().innerHTML = "You must provide a workspace name";
     let envName = document.getElementById("environment").value || "env1";
+    showAnimation();
     runSalto(['init', workspaceName], [ {q: "Enter a name for the first environment in the workspace", a: envName} ]);
 }
 

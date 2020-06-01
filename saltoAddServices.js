@@ -15,7 +15,6 @@ function saltoMain() {
 }
 
 function run() {
-    showAnimation();
     let homeDir = config.get('saltoHome');
     if ( !homeDir )
         return getStatus().innerHTML = "Workspace home directory is not configured.";
@@ -38,6 +37,7 @@ function run() {
         {q: "Token", a: token},
         {q: "Sandbox", a: isSandbox}
     ]
+    showAnimation();
     runSalto(['services', 'add', application], inputs);
 }
 

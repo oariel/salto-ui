@@ -5,18 +5,21 @@ function showAnimation() {
     var c = document.getElementById("command-output");
     var o = document.getElementById("command-output-div");
     var img = document.getElementById("working-image");
+    var rb = document.getElementById("run-button");
 
     st.innerHTML = WORKING_INDICATOR;
-    img.style.display = "block";
     if ( o.style.display === "none" ) {
+        img.style.display = "block";
+        rb.disabled = true;
         var tb = document.getElementById("toggle-button");
         var timer = setInterval(function() { 
             if ( st.innerHTML !== WORKING_INDICATOR ) {
                 img.style.display = "none";
+                rb.disabled = false;
                 clearInterval(timer);
             }
-           if ( c.value )
-            tb.disabled = false;
+            if ( c.value )
+                tb.disabled = false;
         }, 250);
     }
 }

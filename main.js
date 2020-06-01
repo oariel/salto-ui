@@ -78,6 +78,14 @@ app.on('ready', () => {
       }
     },
     {
+      label: 'Preview',
+      click: () => {
+        win.loadURL('file://' + __dirname + '/saltoPreview.html');
+        win.show();
+        win.focus();
+      }
+    },
+    {
       label: 'Deploy',
       click: () => {
         win.loadURL('file://' + __dirname + '/saltoDeploy.html');
@@ -174,6 +182,10 @@ ipcMain.on('saltoAddServices', (event) => {
 
 ipcMain.on('saltoFetch', (event) => {
   win.loadURL('file://' + __dirname + '/saltoFetch.html');
+});
+
+ipcMain.on('saltoPreview', (event) => {
+  win.loadURL('file://' + __dirname + '/saltoPreview.html');
 });
 
 ipcMain.on('saltoDeploy', (event) => {

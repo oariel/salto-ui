@@ -62,7 +62,5 @@ function runSalto(args, responses) {
           setStatus('Salto completed.');
         else
           setStatus('Salto exited with code ' + code);
-
-        getCommandOutput().style.background = "LightGray";
     });
 };

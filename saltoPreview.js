@@ -19,7 +19,7 @@ function run() {
     if ( !homeDir )
         return getStatus().innerHTML = "Workspace home directory is not configured.";
     showAnimation();
-    runSalto(['deploy'], [{q: "Do you want to perform these actions", a: "Y"}]);
+    runSalto(['preview'], []);
 }
 
 

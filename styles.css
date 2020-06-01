@@ -47,6 +47,39 @@ input, select, button {
     text-shadow:0px 1px 0px #ffffff;
 }
 
+textarea {
+    -moz-box-shadow:outset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:outset 0px 1px 0px 0px #ffffff;
+	box-shadow:outset 0px 1px 0px 0px #ffffff;
+	background-color:#ffffff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:4px;
+	border:1px solid #dcdcdc;
+    background-color: #252525;
+    height: 60vh;
+    width: 135vh;
+    margin: 0;
+    resize: none;
+    padding: 1.5rem;
+    color: white;
+    font: 0.8rem Inconsolata, monospace;
+    text-shadow: 0 0 5px #C8C8C8;
+}
+
+::selection {
+  background: #0080FF;
+  text-shadow: none;
+}
+pre {
+  margin: 0;
+}
+View Compiled
+
+
+
+Resources1×0.5×0.25×Rerun
+
 input:hover, select:hover, button:hover {
 	background-color:#f6f6f6;
 }

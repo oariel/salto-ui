@@ -31,6 +31,11 @@ function saltoFetch() {
     return true;
 }
 
+function saltoPreview() {
+    ipcRenderer.send("saltoPreview");    
+    return true;
+}
+
 function saltoDeploy() {
     ipcRenderer.send("saltoDeploy");    
     return true;
