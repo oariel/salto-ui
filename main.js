@@ -176,6 +176,10 @@ ipcMain.on('saltoFetch', (event) => {
   win.loadURL('file://' + __dirname + '/saltoFetch.html');
 });
 
+ipcMain.on('saltoDeploy', (event) => {
+  win.loadURL('file://' + __dirname + '/saltoDeploy.html');
+});
+
 // notification
 ipcMain.on('notification', (event, title, content) => {
   alert.notify({ 
