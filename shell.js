@@ -41,10 +41,11 @@ function runSalto(args, responses) {
     showOS();
 
     var homeDir = config.get('saltoHome');
-
+    var saltoPath = config.get('saltoPath');
+  
     appendOutput("Home directory: " + homeDir);
-        
-    var child = process.spawn('salto', args, {cwd: homeDir}); 
+  
+    var child = process.spawn(saltoPath, args, {cwd: homeDir}); 
 
     child.on('error', function(err) {
         appendOutput('stderr: <'+err+'>' );

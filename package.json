@@ -12,9 +12,10 @@
   "author": "Salto, Inc.",
   "license": "ISC",
   "dependencies": {
+    "electron-config": "^1.0.0",
     "electron-is": "^3.0.0",
     "electron-notify": "^0.1.0",
-    "electron-config": "^1.0.0",
+    "electron-prompt": "^1.5.1",
     "opn": "^5.4.0",
     "path": "^0.12.7",
     "prettyjson": "^1.2.1"

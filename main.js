@@ -1,6 +1,7 @@
 const electron = require('electron');
 const path = require('path');
 const {app, Tray, Menu, BrowserWindow, ipcMain, dialog} = electron;
+const electronPrompt = require('electron-prompt');
 var logger = require(path.resolve(__dirname, "./lib/logger.js"));
 const opn = require('opn');
 
@@ -18,15 +19,59 @@ let appIcon = null;
 let alert = null;
 let win = null;
 
+// Find out where Salto is installed
+async function getSaltoPath() {
+  if ( config.get('saltoPath') )
+    return; // already configured
+
+  return new Promise(resolve => {
+    require('child_process').exec(`which salto`, function(err, stdout) {
+      var str = stdout;
+      var saltoPath = str.replace('\n','');
+      if ( !saltoPath ) {
+        electronPrompt(
+          {
+            title: 'Salto Configuration',
+            label: 'Enter the Salto executable path:',
+            value: '',
+            inputAttrs: {
+                type: 'text',
+                required: true
+            },
+            type: 'input'
+        })
+        .then((r) => {
+          if(r === null) {
+              logger.e('User cancelled. Goodbye.');
+              process.exit(1);
+          } else {
+              saltoPath = r;
+              logger.log("Salto path: " + saltoPath);
+              config.set('saltoPath', saltoPath)
+              return resolve(saltoPath);
+          }
+        })
+      }
+      else {
+        logger.log("Salto path: " + saltoPath);
+        config.set('saltoPath', saltoPath);
+        return resolve(saltoPath);
+      }
+    });
+  });
+}
+
+
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 
 // Global session object
 global.sharedObj = {session: {initialized: false}};
 
-app.on('ready', () => {
+app.on('ready', async () => {
 
 
   logger.log('Config path: ' + app.getPath('userData'));
+  await getSaltoPath();
 
   // Change notification config options (only works after app is ready)
   alert = require('electron-notify');
@@ -218,6 +263,12 @@ ipcMain.on('notification', (event, title, content) => {
 
 process.on('uncaughtException', function (error) {
   logger.e('EXCEPTION CAUGHT');
+  const messageBoxOptions = {
+    type: "error",
+    title: "Oh no.. an error has occurred",
+    message: error.message
+  };
+  dialog.showMessageBox(messageBoxOptions);
   logger.e(error.stack);
 });
 
