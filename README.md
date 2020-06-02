@@ -7,13 +7,13 @@ Salto UI is an Electron-based shell for [Salto's open source project](https://sa
 Use npm to install and run salto-ui
 
 ```
-npm start
+npm install
 ```
 
 ## Usage
 
 ```
-npm install
+npm start
 ```
 
 ## Contributing
