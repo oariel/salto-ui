@@ -7,7 +7,7 @@ const config = new Config();
 // remoting
 const {remote, ipcRenderer} = require('electron');
 let mainWindow = remote.require('./main.js');
-window.resizeTo(720, 450);
+window.resizeTo(720, 240);
 
 function saltoMain() {
     ipcRenderer.send("saltoMain");    
@@ -25,6 +25,7 @@ function selectApplication() {
     var hubspot = document.getElementById("hubspot");
     salesforce.style.display = sel.value === "salesforce" ? "block" : "none";
     hubspot.style.display = sel.value === "hubspot" ? "block" : "none";
+    window.resizeTo(720, sel.value === "salesforce"  ? 400 : 300);
 }
 
 function run() {

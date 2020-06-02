@@ -37,10 +37,6 @@ app.on('ready', () => {
 
   appIcon = new Tray(iconPath);
 
-  appIcon.on('mouse-enter', () => {
-  
-  })
-
   var contextMenu = Menu.buildFromTemplate([
     {
       label: 'Main Menu',
@@ -119,19 +115,24 @@ app.on('ready', () => {
   ]);
 
   appIcon.setToolTip('Salto');
+
+  appIcon.on('mouse-enter', () => {
+    logger.log('mouse-enter');
+  })
+
   appIcon.setContextMenu(contextMenu);
 
   // create a new `splash`-Window 
-  var splash = new BrowserWindow({width: 484, height: 425, transparent: true, frame: false, alwaysOnTop: true});
+  var splash = new BrowserWindow({width: 484, height: 425, icon: path.join(__dirname, './icon.png'), transparent: true, frame: false, alwaysOnTop: true});
   splash.loadURL('file://' + __dirname + '/splash.png');
 
   return setTimeout(function()  { 
-    win = new BrowserWindow({width: 720, height: 400, frame: false, resizable: false})
+    win = new BrowserWindow({width: 720, height: 400, icon: path.join(__dirname, './icon.png'), frame: false, resizable: false})
     win.loadURL('file://' + __dirname + '/saltoMain.html');
     win.show();
     win.focus();
     win.on('blur', () => {
-      //win.close();
+      
     })
     win.on('close', (event) => {
       event.preventDefault();

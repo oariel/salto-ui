@@ -1,3 +1,4 @@
+@charset "UTF-8";
 h1 { color: #111; font-family: 'Roboto', 'Arial', sans-serif; font-size: 24px; font-weight: normal; letter-spacing: -1px; line-height: 1; text-align: center; color:#555555; }
 h3 { color: #111; font-family: 'Roboto', 'Arial', sans-serif; font-size: 12px; font-weight: normal; color:#555555; }
 body { 
@@ -38,7 +39,6 @@ input, select, button {
 	border-radius:4px;
 	border:1px solid #dcdcdc;
 	display:inline-block;
-	cursor:pointer;
 	color:#666666;
 	font-family:'Roboto', 'Arial', sans-serif;
 	font-size:14px;
@@ -47,6 +47,11 @@ input, select, button {
 	text-decoration:none;
     text-shadow:0px 1px 0px #ffffff;
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #bbbbbb;
+    opacity: 1; /* Firefox */
+  }
 
 textarea {
     -moz-box-shadow:outset 0px 1px 0px 0px #ffffff;
@@ -59,7 +64,7 @@ textarea {
 	border:1px solid #dcdcdc;
     background-color: #252525;
     height: 300px;
-    width: 90vw;
+    width: 93vw;
     margin: 0;
     resize: none;
     padding: 1.5rem;
@@ -70,13 +75,52 @@ textarea {
 
 .close-thick:after {
     color: #ffa500;
-    font: 20px/100% arial, sans-serif;
+    font: 30px/100% arial, sans-serif;
     position: absolute;
     right: 4px;
     text-decoration: none;
     text-shadow: 0 1px 0 #4F515A;
     top: 0px;
-    content: 'x'; /* UTF-8 symbol */
+    content: '×'; /* UTF-8 symbol */
+    cursor: pointer; 
+}
+
+.home-thick:after {
+    color: #ffa500;
+    font: 25px/100% arial, sans-serif;
+    position: absolute;
+    right: 28px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #4F515A;
+    top: 0px;
+    content: '⌂'; /* UTF-8 symbol */
+    cursor: pointer; 
+}
+
+.terminal-thick:after {
+    color: #ffa500;
+    font: 25px/100% arial, sans-serif;
+    position: absolute;
+    right: 52px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #4F515A;
+    top: 0px;
+    content: '□'; /* UTF-8 symbol */
+    cursor: pointer; 
+}
+
+.salto-logo {
+    position:absolute;
+    left:30;
+    top: 10;
+    mix-blend-mode: multiply;
+}
+.working-image {
+    position:absolute;
+    left:8;
+    top: 30;
+    mix-blend-mode: multiply;
+    display: none;
 }
 
 ::selection {

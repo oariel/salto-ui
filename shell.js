@@ -73,6 +73,6 @@ function runSalto(args, responses) {
         if (code == 0)
           setStatus('Salto completed.');
         else
-          setStatus('Salto exited with code ' + code);
+          setStatus('Salto exited with error #' + code);
     });
 };

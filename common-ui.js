@@ -1,17 +1,16 @@
-const WORKING_INDICATOR = "Working...";
+const WORKING_INDICATOR = "Salto is working...";
 const COMPLETE_INDICATOR = "Salto completed.";
 
 function showAnimation() {
     var st = document.getElementById("status");
     var c = document.getElementById("command-output");
-    var o = document.getElementById("command-output-div");
     var img = document.getElementById("working-image");
     var rb = document.getElementById("run-button");
     var ns = document.getElementById("next-step");
 
     st.innerHTML = WORKING_INDICATOR;
-    if ( o.style.display === "none" ) {
-        img.style.display = "block";
+    if ( c.style.display === "none" ) {
+        img.style.display = "inline";
         rb.disabled = true;
         var tb = document.getElementById("toggle-button");
         var timer = setInterval(function() { 
@@ -25,7 +24,7 @@ function showAnimation() {
                 clearInterval(timer);
             }
             if ( c.value )
-                tb.disabled = false;
+                tb.style.display = "block";
         }, 250);
     }
 }
@@ -33,18 +32,18 @@ function showAnimation() {
 function toggleOutput() {
     var st = document.getElementById("status");
     let isWorking = (st.innerHTML === WORKING_INDICATOR);
-    var c = document.getElementById("command-output-div");
+    var c = document.getElementById("command-output");
     var img = document.getElementById("working-image");
     if (c.style.display === "none") {
         img.style.display = "none";
         c.style.display = "block";
-        window.resizeBy(0, 200)
+        window.resizeBy(0, 320)
     } 
     else {
         c.style.display = "none";
         if ( isWorking )
             img.style.display = "block";
-        window.resizeBy(0, -200)
+        window.resizeBy(0, -320)
     }
 }
 

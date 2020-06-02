@@ -7,7 +7,7 @@ const config = new Config();
 // remoting
 const {remote, ipcRenderer} = require('electron');
 let mainWindow = remote.require('./main.js');
-window.resizeTo(720, 400);
+window.resizeTo(720, 280);
 
 function saltoMain() {
     ipcRenderer.send("saltoMain");    

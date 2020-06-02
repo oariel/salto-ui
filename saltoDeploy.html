@@ -5,8 +5,11 @@
 </head>
 <body oncontextmenu="return false" style="padding:0; background-color:#ffffff">
     <div style="Margin:0px auto;padding: 16px;">
-        <div style="float: left;"><img alt="Salso Logo" width="48" src="https://salto.io/assets/images/logo.svg"></div>
+        <img class="salto-logo" alt="Salto Logo" width="48" src="https://salto.io/assets/images/logo.svg">
+        <img class="working-image" id="working-image" alt="Working..." src="./working.gif" width="100">
         <a href="#" class="close-thick" onclick="window.close();"></a>
+        <a href="#" class="home-thick" onclick="saltoMain();"></a>
+        <a href="#" style="display: none" id="toggle-button" class="terminal-thick" onclick="toggleOutput();"></a>
         <div style="min-height:50px;" class="content" id="card">
             <h1><span style="font-family: Inconsolata, monospace">salto deploy: </span>Deploy configuration changes</h1>
             <hr>
@@ -14,13 +17,13 @@
             <table style="width: 100%" cellpadding="5">
                 <tr>
                     <td style="text-align: center;" colspan="2">
-                        <div style="float: center;"><input id="run-button" value="Run Command" type="button" onclick="run();">&nbsp;<input value="Toggle Output" disabled type="button" id="toggle-button" onclick="toggleOutput();">&nbsp;<input value="Main Menu" type="button" onclick="saltoMain();"></div>
+                        <div style="float: center;"><input id="run-button" value="Run Command" type="button" onclick="run();"></div>
                     </td>
                 </tr>
             </table>
             <p><div style="font-weight: bold;" id="status"></div></p>
             <p><div style="display: none;" id="working-image"><img id="working" alt="Working..." src="./working.gif" width="100"></div></p>
-            <p><div style="display: none;" id="command-output-div"><textarea rows="20" cols="90" id="command-output" disabled="true"></textarea></div></div></p>
+            <textarea style="display: none;" rows="20" cols="90" id="command-output" disabled="true"></textarea>
             <script src="shell.js"></script>
             <script src="common-ui.js"></script>
         </div>

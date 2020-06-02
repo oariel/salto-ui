@@ -5,8 +5,11 @@
 </head>
 <body oncontextmenu="return false" style="padding:0; background-color:#ffffff">
     <div style="Margin:0px auto;padding: 16px;">
-        <div style="float: left;"><img alt="Salso Logo" width="48" src="https://salto.io/assets/images/logo.svg"></div>
+        <img class="salto-logo" alt="Salto Logo" width="48" src="https://salto.io/assets/images/logo.svg">
+        <img class="working-image" id="working-image" alt="Working..." src="./working.gif" width="100">
         <a href="#" class="close-thick" onclick="window.close();"></a>
+        <a href="#" class="home-thick" onclick="saltoMain();"></a>
+        <a href="#" style="display: none" id="toggle-button" class="terminal-thick" onclick="toggleOutput();"></a>
         <div style="min-height:50px;" class="content" id="card">
             <h1><span style="font-family: Inconsolata, monospace">salto services add: </span>Add services to workspace</h1>
             <hr>
@@ -28,18 +31,18 @@
             <table style="display: none; width: 100%" id="salesforce" cellpadding="5">
                 <tr>
                     <td style="width: 50%; text-align: right;">
-                        <strong>Username:</strong>
+                        <strong>Username:*</strong>
                     </td>
                     <td style="text-align: left;">
-                        <input type="text" size="30" id="username">
+                        <input placeholder="Salesforce username" type="text" size="30" id="username">
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: right;">
-                        <strong>Password:</strong>
+                        <strong>Password:*</strong>
                     </td>
                     <td style="text-align: left;">
-                        <input type="password" size="30" id="password">
+                        <input placeholder="Salesforce password" type="password" size="30" id="password">
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +50,7 @@
                         <strong>Token:</strong>
                     </td>
                     <td style="text-align: left;">
-                        <input type="password" size="30" id="token">
+                        <input placeholder="Salesforce access token" type="password" size="30" id="token">
                     </td>
                 </tr>
                 <tr>
@@ -68,21 +71,21 @@
                         <strong>API Key:</strong>
                     </td>
                     <td style="text-align: left;">
-                        <input type="text" size="30" id="api-key">
+                        <input placeholder="Hubspot API Key" type="text" size="30" id="api-key">
                     </td>
                 </tr>
             <table>
             <table style="width: 100%" cellpadding="5">
                 <tr>
                     <td style="text-align: center;">
-                        <div style="float: center;"><input id="run-button" value="Run Command" type="button" onclick="run();">&nbsp;<input value="Toggle Output" disabled type="button" id="toggle-button" onclick="toggleOutput();">&nbsp;<input value="Main Menu" type="button" onclick="saltoMain();"></div>
+                        <div style="float: center;"><input id="run-button" value="Run Command" type="button" onclick="run();"></div>
                     </td>
                 </tr>
             </table>
             <p><div style="font-weight: bold;" id="status"></div></p>
             <p><div style="display: none;" id="next-step"><strong>Next step: <a href="#" onclick="saltoFetch();">Fetch</a></strong></div>
             <p><div style="display: none;" id="working-image"><img id="working" alt="Working..." src="./working.gif" width="100"></div></p>
-            <p><div style="display: none;" id="command-output-div"><textarea rows="20" cols="90" id="command-output" disabled="true"></textarea></div></div></p>
+            <textarea style="display: none;" rows="20" cols="90" id="command-output" disabled="true"></textarea>
             <script src="shell.js"></script>
             <script src="common-ui.js"></script>
         </div>
