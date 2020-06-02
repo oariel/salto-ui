@@ -4,4 +4,4 @@ config-*
 .DS_Store
 *.zip
 dist
-package-lock.*
+package-lock.json
