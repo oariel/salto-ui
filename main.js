@@ -69,8 +69,30 @@ global.sharedObj = {session: {initialized: false}};
 
 app.on('ready', async () => {
 
-
   logger.log('Config path: ' + app.getPath('userData'));
+
+  // setup the application menu
+  var template = [{
+    label: "Application",
+    submenu: [
+        { label: "About Salto", selector: "orderFrontStandardAboutPanel:" },
+        { type: "separator" },
+        { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
+    ]}, {
+    label: "Edit",
+    submenu: [
+        { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+        { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
+        { type: "separator" },
+        { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+        { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+        { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+        { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
+    ]}
+  ];
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+
   await getSaltoPath();
 
   // Change notification config options (only works after app is ready)
@@ -219,6 +241,10 @@ ipcMain.on('saltoHome', (event, url) => {
   let dir = dialog.showOpenDialog(win, {
     properties: ['openDirectory']
   });
+
+  if ( !dir ) 
+    return;
+    
   let saltoHome = dir[0];
   config.set('saltoHome', saltoHome);
   win.reload();
@@ -259,7 +285,7 @@ ipcMain.on('notification', (event, title, content) => {
 
 
 ////////////////////////////////////////////////////////
-// Local attachment gateway
+// Exception handlers
 
 process.on('uncaughtException', function (error) {
   logger.e('EXCEPTION CAUGHT');
