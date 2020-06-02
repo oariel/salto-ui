@@ -8,7 +8,7 @@ For more information on Salto's open source project see https://salto.io
 Use npm to install and run salto-ui
 
 ```
-npm install
+npm start
 ```
 
 ## Usage
