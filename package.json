@@ -7,23 +7,22 @@
     "postinstall": "install-app-deps",
     "start": "electron ./ --enable-logging",
     "dev": "NODE_ENV='development' npm run start",
-    "dist": "build -mwl --x64 --ia32"
+    "dist": "node node_modules/electron-builder/out/cli/cli.js"
   },
   "author": "Salto, Inc.",
   "license": "ISC",
   "dependencies": {
-    "electron": "^3.1.13",
-    "electron-config": "^1.0.0",
     "electron-is": "^3.0.0",
     "electron-notify": "^0.1.0",
+    "electron-config": "^1.0.0",
     "opn": "^5.4.0",
     "path": "^0.12.7",
     "prettyjson": "^1.2.1"
   },
   "devDependencies": {
-    "electron-builder": "^20.38.5",
-    "electron-config": "^1.0.0",
-    "electron-prebuilt": "^1.4.13"
+    "electron": "^3.1.13",
+    "electron-prebuilt": "^1.4.13",
+    "electron-builder": "^22.7.0"
   },
   "build": {
     "appId": "Salto",

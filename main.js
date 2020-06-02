@@ -39,15 +39,22 @@ app.on('ready', () => {
 
   var contextMenu = Menu.buildFromTemplate([
     {
-      label: 'Main Menu',
+      label: 'Show window',
       click: () => {
-        win.loadURL('file://' + __dirname + '/saltoMain.html');
         win.show();
         win.focus();
       }
     },
     {
       type: 'separator'
+    },
+    {
+      label: 'Main Menu',
+      click: () => {
+        win.loadURL('file://' + __dirname + '/saltoMain.html');
+        win.show();
+        win.focus();
+      }
     },
     {
       label: 'Initialize',
@@ -90,6 +97,9 @@ app.on('ready', () => {
       }
     },
     {
+      type: 'separator'
+    },
+    {
       label: 'Developer',
       submenu: [
         {
@@ -116,8 +126,8 @@ app.on('ready', () => {
 
   appIcon.setToolTip('Salto');
 
-  appIcon.on('mouse-enter', () => {
-    logger.log('mouse-enter');
+  appIcon.on('mouse-down', () => {
+    win.show()
   })
 
   appIcon.setContextMenu(contextMenu);
