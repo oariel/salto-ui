@@ -3,4 +3,5 @@ node_modules/
 config-*
 .DS_Store
 *.zip
+dist
 package-lock.*
