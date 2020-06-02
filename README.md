@@ -1,6 +1,6 @@
 # salto-ui
 
-Salto UI is an Electron-based shell for Salto's open source project. For more information on Salto's open source project see https://salto.io
+Salto UI is an Electron-based shell for [Salto's open source project](https://salto.io). 
 
 ## Installation
 
