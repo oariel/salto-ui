@@ -1,16 +1,18 @@
 # salto-ui
 
-Salto UI is an Electron-based shell for [Salto's open source project](https://salto.io). 
+Salto UI is an Electron-based GUI for [Salto's open source project](https://salto.io). 
 
 ## Installation
 
-Use npm to install and run salto-ui
+Use npm to install salto-ui
 
 ```
 npm install
 ```
 
 ## Usage
+
+Use npm to run salto-ui
 
 ```
 npm start
